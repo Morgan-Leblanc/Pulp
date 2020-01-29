@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 // GET ALL GLADIATOR
-router.get('/all-cosmetic', (req, res)=> {
+router.get('/all', (req, res)=> {
     connection.query('SELECT * FROM gladiator', (err, results) => {
         if (err) {
             res.status(500).send(`Erreur lors de la récupération de la liste des gladiateurs !!`)
