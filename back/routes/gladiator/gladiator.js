@@ -17,7 +17,17 @@ router.get('/all', (req, res)=> {
         }
     })
 })
-
+// GET ALL GLADIATOR
+router.get('/all/type', (req, res)=> {
+    id = req.params
+    connection.query('SELECT * FROM gladiator join gladiator_type on gladiator.id=gladiator_type.id where id_type = ?', id , (err, results) => {
+        if (err) {
+            res.status(500).send(`Erreur lors de la récupération de la liste des gladiateurs !!`)
+        } else {
+            res.status(200).send(results)
+        }
+    })
+})
 // GET ONE GLADIATOR BY ID
 router.get('/:id', (req, res)=> {
     const id = req.params.id

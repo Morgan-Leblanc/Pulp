@@ -29,6 +29,9 @@ app.use("/combat", route.combat)
 //Route for Gladiator
 app.use("/gladiator", route.gladiator)
 
+//Route for Type
+app.use("/type", route.type)
+
 app.listen(port, err => {
     if (err){ throw new Error('👎 👎  -- Something bad happened... server not connected -- 👎 👎 ')}
     console.log(`😎😎 -- Node/Express Server is listening on ${port} -- 😎😎`)

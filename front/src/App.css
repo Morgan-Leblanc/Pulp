@@ -1,5 +1,13 @@
+@font-face{font-family: "GLADIATOR" ;
+  src:url("./assets/fonts/GLADIATOR.ttf");} 
+  
 .App {
   text-align: center;
+  background-image:url("./assets/pictures/947088.jpg");
+  background-size: cover;
+  width: 100vw;
+  height:180vh;
+  font-family: "GLADIATOR";
 }
 
 .App-logo {
@@ -14,7 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,6 +34,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.container-fluid{
+  padding-left:0px;
 }
 
 @keyframes App-logo-spin {
