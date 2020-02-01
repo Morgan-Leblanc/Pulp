@@ -9,7 +9,7 @@ class Emperor extends React.Component {
     gladiators: [],
     gladiatorList: [],
     skillList: [],
-    skillByGladiator_id:[],
+    skillByGladiator_id: [],
     displayGladiator: false,
     displayTypes: false,
     combat_id: 0,
@@ -35,12 +35,6 @@ class Emperor extends React.Component {
       this.setState({ skillList: res.data });
     });
   };
-
-  // getskillByGladiator_id = () => {
-  //   axios.get('/combat/skill-by-gladiator').then(res => {
-  //     this.setState({ skillByGladiator_id: res.data });
-  //   });
-  // }
 
   getCombats = () => {
     axios
@@ -90,9 +84,9 @@ class Emperor extends React.Component {
   ///AXIOS POST ///
   addGladiator = e => {
     const gladiator_skill = {
-      id_gladiator : e.target.value,
+      id_gladiator: e.target.value,
       id_skill: this.state.skillByGladiator_id
-    }
+    };
     const gladiator_combat = {
       id_gladiator: e.target.value,
       id_combat: this.state.combat_id
@@ -101,15 +95,13 @@ class Emperor extends React.Component {
       .post("/combat/add-gladiator", gladiator_combat)
       .then(response => response.data)
       .then(data => {
-        console.log(data);
         alert(data);
       });
-    if(gladiator_skill.id_skill){
-      axios.post("/combat/add-skill", gladiator_skill)
-        .then( response => response.data)
-        .then( data => {console.log(data)})
+    if (gladiator_skill.id_skill) {
+      axios
+        .post("/combat/add-skill", gladiator_skill)
+        .then(response => response.data);
     }
-      
   };
 
   componentDidMount() {
@@ -119,7 +111,6 @@ class Emperor extends React.Component {
   }
 
   render() {
-    console.log(this.state.skillByGladiator_id)
     return (
       <div className="">
         <h1 className="display-2 mb-5">Emperor</h1>
@@ -138,14 +129,14 @@ class Emperor extends React.Component {
         ))}
         {this.state.combatsByTypes
           ? this.state.combatsByTypes.map((type, i) => (
-              <div className="d-inline-block mx-5">
+              <div className="d-table-cell ml-3 my-3 ">
                 <p key={i}>
-                  <h2 className=" text-dark display-5  mb-5 m-auto">
+                  <h4 className=" text-dark">
                     {type.name} for combat number {type.id_combat}
-                  </h2>
+                  </h4>
                   <button
                     type="button"
-                    class="btn btn-danger mx-5 mt-5 my-4 py-4 px-4"
+                    className="btn btn-danger mx-5 mt-5 my-4 py-4 px-4"
                     onClick={this.getGladiatorByType}
                     value={type.id_type}
                   >
@@ -159,13 +150,13 @@ class Emperor extends React.Component {
           ? this.state.gladiatorList.map((gladiator, i) => (
               <div className="d-inline mx-5 my-5">
                 <p key={i}>
-                  <h2 className="text-dark">{gladiator.name}</h2>
+                  <h2 className=" display-4 text-dark">{gladiator.name}</h2>
                   <p>
                     {gladiator.is_skillable ? (
                       <select
-                      className=" w-50 custom-select "
-                      onChange={this.handleChange}
-                      name="skillByGladiator_id"
+                        className=" w-50 custom-select "
+                        onChange={this.handleChange}
+                        name="skillByGladiator_id"
                       >
                         <option>--Selectionne le skill--</option>
                         {this.state.skillList.map(data => (
@@ -178,7 +169,7 @@ class Emperor extends React.Component {
                   </p>
                   <button
                     type="button"
-                    class="btn btn-dark"
+                    className="btn btn-dark"
                     onClick={this.addGladiator}
                     value={gladiator.id}
                   >
@@ -190,8 +181,7 @@ class Emperor extends React.Component {
           : ""}
         {this.state.displayPhoto ? (
           <div>
-            {" "}
-            <img src={GIF} />
+            <img src={GIF} alt="gitmerge" />
           </div>
         ) : (
           ""
