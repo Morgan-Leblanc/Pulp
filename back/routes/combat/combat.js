@@ -26,7 +26,9 @@ router.get("/all-combat-by-type", (req, res) => {
     if (err) {
       res
         .status(500)
-        .send(`Erreur lors de la récupération de la liste des combats par leur type!!`);
+        .send(
+          `Erreur lors de la récupération de la liste des combats par leur type!!`
+        );
     } else {
       res.status(200).send(results);
     }
@@ -53,7 +55,9 @@ router.get("/skill-by-gladiator", (req, res) => {
       if (err) {
         res
           .status(500)
-          .send(`Erreur lors de la récupération de la liste des skills des gladiateurs !!`);
+          .send(
+            `Erreur lors de la récupération de la liste des skills des gladiateurs !!`
+          );
       } else {
         res.status(200).send(results);
       }
@@ -97,7 +101,9 @@ router.post("/add-gladiator", (req, res) => {
                 .send(`Erreur lors de l'ajout des gladiateurs au combat !!`)
                 .status(500);
             } else {
-              res.send("Le gladiateur à  bien été assigné au combat").status(200);
+              res
+                .send("Le gladiateur à  bien été assigné au combat")
+                .status(200);
             }
           }
         );
@@ -116,14 +122,13 @@ router.post("/add-skill", (req, res) => {
       if (err) {
         console.log(err);
         res.send(`Erreur lors de l'ajout des skills !!`).status(500);
-      }
-      if (results) {
+      } else if (results.length > 0) {
         console.log("else if", results);
         res.send(`L'arme utilisé est deja assigné au combat `).status(200);
       } else {
         connection.query(
           "INSERT INTO gladiator_skill SET ?",
-          objet.id_skill,objet.id_gladiator,
+          objet,
           (err, results) => {
             if (err) {
               console.log(err);
@@ -132,10 +137,7 @@ router.post("/add-skill", (req, res) => {
                 .status(500);
             } else {
               res
-                .send(
-                  "Le gladiateur et son skill ont  bien été ajouté !",
-                  results
-                )
+                .send("Le gladiateur et son skill ont  bien été ajouté !")
                 .status(200);
             }
           }
@@ -234,13 +236,15 @@ router.get("/gladiators/:id_type", (req, res) => {
   );
 });
 // GET ALL type
-router.get('/type/all', (req, res)=> {
-    connection.query('SELECT * FROM type', (err, results) => {
-        if (err) {
-            res.status(500).send(`Erreur lors de la récupération de la liste des types !!`)
-        } else {
-            res.status(200).send(results)
-        }
-    })
-})
+router.get("/type/all", (req, res) => {
+  connection.query("SELECT * FROM type", (err, results) => {
+    if (err) {
+      res
+        .status(500)
+        .send(`Erreur lors de la récupération de la liste des types !!`);
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
 module.exports = router;
