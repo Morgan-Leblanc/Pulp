@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Mer 29 Janvier 2020 à 16:53
--- Version du serveur :  5.7.29-0ubuntu0.18.04.1
--- Version de PHP :  7.2.24-0ubuntu0.18.04.2
+-- Hôte : localhost
+-- Généré le :  lun. 03 fév. 2020 à 10:47
+-- Version du serveur :  8.0.19-0ubuntu0.19.10.3
+-- Version de PHP :  7.3.11-0ubuntu0.19.10.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -27,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `combat` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `combat`
+-- Déchargement des données de la table `combat`
 --
 
 INSERT INTO `combat` (`id`, `name`) VALUES
@@ -47,23 +49,10 @@ INSERT INTO `combat` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `combat_type` (
-  `id` int(11) NOT NULL,
-  `id_combat` int(11) NOT NULL,
-  `id_type` int(11) NOT NULL
+  `id` int NOT NULL,
+  `id_combat` int NOT NULL,
+  `id_type` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `combat_type`
---
-
-INSERT INTO `combat_type` (`id`, `id_combat`, `id_type`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 5),
-(5, 2, 2),
-(4, 2, 4),
-(6, 3, 1),
-(7, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -72,13 +61,13 @@ INSERT INTO `combat_type` (`id`, `id_combat`, `id_type`) VALUES
 --
 
 CREATE TABLE `gladiator` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL,
   `is_skillable` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `gladiator`
+-- Déchargement des données de la table `gladiator`
 --
 
 INSERT INTO `gladiator` (`id`, `name`, `is_skillable`) VALUES
@@ -103,9 +92,9 @@ INSERT INTO `gladiator` (`id`, `name`, `is_skillable`) VALUES
 --
 
 CREATE TABLE `gladiator_combat` (
-  `id` int(11) NOT NULL,
-  `id_gladiator` int(11) NOT NULL,
-  `id_combat` int(11) NOT NULL
+  `id` int NOT NULL,
+  `id_gladiator` int NOT NULL,
+  `id_combat` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,9 +104,9 @@ CREATE TABLE `gladiator_combat` (
 --
 
 CREATE TABLE `gladiator_skill` (
-  `id` int(11) NOT NULL,
-  `id_gladiator` int(11) NOT NULL,
-  `id_skill` int(11) NOT NULL
+  `id` int NOT NULL,
+  `id_gladiator` int NOT NULL,
+  `id_skill` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -127,13 +116,13 @@ CREATE TABLE `gladiator_skill` (
 --
 
 CREATE TABLE `gladiator_type` (
-  `id` int(11) NOT NULL,
-  `id_gladiator` int(11) NOT NULL,
-  `id_type` int(11) NOT NULL
+  `id` int NOT NULL,
+  `id_gladiator` int NOT NULL,
+  `id_type` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `gladiator_type`
+-- Déchargement des données de la table `gladiator_type`
 --
 
 INSERT INTO `gladiator_type` (`id`, `id_gladiator`, `id_type`) VALUES
@@ -142,7 +131,7 @@ INSERT INTO `gladiator_type` (`id`, `id_gladiator`, `id_type`) VALUES
 (3, 3, 1),
 (4, 4, 1),
 (5, 5, 2),
-(6, 5, 2),
+(6, 6, 2),
 (7, 7, 3),
 (8, 8, 3),
 (9, 9, 4),
@@ -158,12 +147,12 @@ INSERT INTO `gladiator_type` (`id`, `id_gladiator`, `id_type`) VALUES
 --
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `role`
+-- Déchargement des données de la table `role`
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
@@ -177,12 +166,12 @@ INSERT INTO `role` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `skill` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `skill`
+-- Déchargement des données de la table `skill`
 --
 
 INSERT INTO `skill` (`id`, `name`) VALUES
@@ -196,12 +185,12 @@ INSERT INTO `skill` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `type` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `type`
+-- Déchargement des données de la table `type`
 --
 
 INSERT INTO `type` (`id`, `name`) VALUES
@@ -218,13 +207,13 @@ INSERT INTO `type` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(250) NOT NULL,
-  `id_role` int(11) NOT NULL
+  `id_role` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -302,61 +291,71 @@ ALTER TABLE `user`
   ADD KEY `id_role` (`id_role`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `combat`
 --
 ALTER TABLE `combat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT pour la table `combat_type`
 --
 ALTER TABLE `combat_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+
 --
 -- AUTO_INCREMENT pour la table `gladiator`
 --
 ALTER TABLE `gladiator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT pour la table `gladiator_combat`
 --
 ALTER TABLE `gladiator_combat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
 -- AUTO_INCREMENT pour la table `gladiator_skill`
 --
 ALTER TABLE `gladiator_skill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT pour la table `gladiator_type`
 --
 ALTER TABLE `gladiator_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -392,6 +391,7 @@ ALTER TABLE `gladiator_type`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
