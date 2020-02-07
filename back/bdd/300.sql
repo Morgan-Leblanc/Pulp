@@ -7,10 +7,13 @@
 -- Version du serveur :  8.0.19-0ubuntu0.19.10.3
 -- Version de PHP :  7.3.11-0ubuntu0.19.10.2
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+SET SQL_MODE
+= "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT
+= 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone
+= "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,16 +31,21 @@ SET time_zone = "+00:00";
 -- Structure de la table `combat`
 --
 
-CREATE TABLE `combat` (
+CREATE TABLE `combat`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL
+  `name` varchar
+(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `combat`
 --
 
-INSERT INTO `combat` (`id`, `name`) VALUES
+INSERT INTO `combat` (`
+id`,
+`name
+`) VALUES
 (1, 'Arena'),
 (2, 'Pise'),
 (3, 'Waterlove');
@@ -48,7 +56,8 @@ INSERT INTO `combat` (`id`, `name`) VALUES
 -- Structure de la table `combat_type`
 --
 
-CREATE TABLE `combat_type` (
+CREATE TABLE `combat_type`
+(
   `id` int NOT NULL,
   `id_combat` int NOT NULL,
   `id_type` int NOT NULL
@@ -60,17 +69,23 @@ CREATE TABLE `combat_type` (
 -- Structure de la table `gladiator`
 --
 
-CREATE TABLE `gladiator` (
+CREATE TABLE `gladiator`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `is_skillable` tinyint(1) NOT NULL
+  `name` varchar
+(250) NOT NULL,
+  `is_skillable` tinyint
+(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `gladiator`
 --
 
-INSERT INTO `gladiator` (`id`, `name`, `is_skillable`) VALUES
+INSERT INTO `gladiator` (`
+id`,
+`name
+`, `is_skillable`) VALUES
 (1, 'Maximus', 1),
 (2, 'Spartacus', 1),
 (3, 'Priscus', 0),
@@ -91,7 +106,8 @@ INSERT INTO `gladiator` (`id`, `name`, `is_skillable`) VALUES
 -- Structure de la table `gladiator_combat`
 --
 
-CREATE TABLE `gladiator_combat` (
+CREATE TABLE `gladiator_combat`
+(
   `id` int NOT NULL,
   `id_gladiator` int NOT NULL,
   `id_combat` int NOT NULL
@@ -103,7 +119,8 @@ CREATE TABLE `gladiator_combat` (
 -- Structure de la table `gladiator_skill`
 --
 
-CREATE TABLE `gladiator_skill` (
+CREATE TABLE `gladiator_skill`
+(
   `id` int NOT NULL,
   `id_gladiator` int NOT NULL,
   `id_skill` int NOT NULL
@@ -115,7 +132,8 @@ CREATE TABLE `gladiator_skill` (
 -- Structure de la table `gladiator_type`
 --
 
-CREATE TABLE `gladiator_type` (
+CREATE TABLE `gladiator_type`
+(
   `id` int NOT NULL,
   `id_gladiator` int NOT NULL,
   `id_type` int NOT NULL
@@ -125,7 +143,10 @@ CREATE TABLE `gladiator_type` (
 -- Déchargement des données de la table `gladiator_type`
 --
 
-INSERT INTO `gladiator_type` (`id`, `id_gladiator`, `id_type`) VALUES
+INSERT INTO `gladiator_type` (`
+id`,
+`id_gladiator
+`, `id_type`) VALUES
 (1, 1, 1),
 (2, 2, 1),
 (3, 3, 1),
@@ -146,16 +167,21 @@ INSERT INTO `gladiator_type` (`id`, `id_gladiator`, `id_type`) VALUES
 -- Structure de la table `role`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE `role`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL
+  `name` varchar
+(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`id`, `name`) VALUES
+INSERT INTO `role` (`
+id`,
+`name
+`) VALUES
 (1, 'Empereur'),
 (2, 'Ludus');
 
@@ -165,16 +191,21 @@ INSERT INTO `role` (`id`, `name`) VALUES
 -- Structure de la table `skill`
 --
 
-CREATE TABLE `skill` (
+CREATE TABLE `skill`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL
+  `name` varchar
+(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `skill`
 --
 
-INSERT INTO `skill` (`id`, `name`) VALUES
+INSERT INTO `skill` (`
+id`,
+`name
+`) VALUES
 (1, 'épée à une main '),
 (2, 'épée à deux mains');
 
@@ -184,16 +215,21 @@ INSERT INTO `skill` (`id`, `name`) VALUES
 -- Structure de la table `type`
 --
 
-CREATE TABLE `type` (
+CREATE TABLE `type`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL
+  `name` varchar
+(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `type`
 --
 
-INSERT INTO `type` (`id`, `name`) VALUES
+INSERT INTO `type` (`
+id`,
+`name
+`) VALUES
 (1, 'Epeiste'),
 (2, 'Lancier'),
 (3, 'Cavalier'),
@@ -206,9 +242,11 @@ INSERT INTO `type` (`id`, `name`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `user`
+(
   `id` int NOT NULL,
-  `name` varchar(250) NOT NULL,
+  `name` varchar
+(250) NOT NULL,
   `id_role` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -220,75 +258,99 @@ CREATE TABLE `user` (
 -- Index pour la table `combat`
 --
 ALTER TABLE `combat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id`
+(`id`);
 
 --
 -- Index pour la table `combat_type`
 --
 ALTER TABLE `combat_type`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_combat` (`id_combat`,`id_type`),
-  ADD KEY `id_type` (`id_type`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id_combat`
+(`id_combat`,`id_type`),
+ADD KEY `id_type`
+(`id_type`);
 
 --
 -- Index pour la table `gladiator`
 --
 ALTER TABLE `gladiator`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id`
+(`id`);
 
 --
 -- Index pour la table `gladiator_combat`
 --
 ALTER TABLE `gladiator_combat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_gladiator` (`id_gladiator`,`id_combat`),
-  ADD KEY `id_combat` (`id_combat`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id_gladiator`
+(`id_gladiator`,`id_combat`),
+ADD KEY `id_combat`
+(`id_combat`);
 
 --
 -- Index pour la table `gladiator_skill`
 --
 ALTER TABLE `gladiator_skill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_gladiator` (`id_gladiator`,`id_skill`),
-  ADD KEY `id_skill` (`id_skill`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id_gladiator`
+(`id_gladiator`,`id_skill`),
+ADD KEY `id_skill`
+(`id_skill`);
 
 --
 -- Index pour la table `gladiator_type`
 --
 ALTER TABLE `gladiator_type`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_gladiator` (`id_gladiator`,`id_type`),
-  ADD KEY `id_type` (`id_type`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id_gladiator`
+(`id_gladiator`,`id_type`),
+ADD KEY `id_type`
+(`id_type`);
 
 --
 -- Index pour la table `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id`
+(`id`);
 
 --
 -- Index pour la table `skill`
 --
 ALTER TABLE `skill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id`
+(`id`);
 
 --
 -- Index pour la table `type`
 --
 ALTER TABLE `type`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY
+(`id`);
 
 --
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`,`id_role`),
-  ADD KEY `id_role` (`id_role`);
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `id`
+(`id`,`id_role`),
+ADD KEY `id_role`
+(`id_role`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -362,35 +424,71 @@ ALTER TABLE `user`
 -- Contraintes pour la table `combat_type`
 --
 ALTER TABLE `combat_type`
-  ADD CONSTRAINT `combat_type_ibfk_1` FOREIGN KEY (`id_combat`) REFERENCES `combat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `combat_type_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `combat_type_ibfk_1` FOREIGN KEY
+(`id_combat`) REFERENCES `combat`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE,
+ADD CONSTRAINT `combat_type_ibfk_2` FOREIGN KEY
+(`id_type`) REFERENCES `type`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `gladiator_combat`
 --
 ALTER TABLE `gladiator_combat`
-  ADD CONSTRAINT `gladiator_combat_ibfk_1` FOREIGN KEY (`id_gladiator`) REFERENCES `gladiator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `gladiator_combat_ibfk_2` FOREIGN KEY (`id_combat`) REFERENCES `combat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `gladiator_combat_ibfk_1` FOREIGN KEY
+(`id_gladiator`) REFERENCES `gladiator`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE,
+ADD CONSTRAINT `gladiator_combat_ibfk_2` FOREIGN KEY
+(`id_combat`) REFERENCES `combat`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `gladiator_skill`
 --
 ALTER TABLE `gladiator_skill`
-  ADD CONSTRAINT `gladiator_skill_ibfk_1` FOREIGN KEY (`id_gladiator`) REFERENCES `gladiator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `gladiator_skill_ibfk_2` FOREIGN KEY (`id_skill`) REFERENCES `skill` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `gladiator_skill_ibfk_1` FOREIGN KEY
+(`id_gladiator`) REFERENCES `gladiator`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE,
+ADD CONSTRAINT `gladiator_skill_ibfk_2` FOREIGN KEY
+(`id_skill`) REFERENCES `skill`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `gladiator_type`
 --
 ALTER TABLE `gladiator_type`
-  ADD CONSTRAINT `gladiator_type_ibfk_1` FOREIGN KEY (`id_gladiator`) REFERENCES `gladiator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `gladiator_type_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `gladiator_type_ibfk_1` FOREIGN KEY
+(`id_gladiator`) REFERENCES `gladiator`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE,
+ADD CONSTRAINT `gladiator_type_ibfk_2` FOREIGN KEY
+(`id_type`) REFERENCES `type`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY
+(`id_role`) REFERENCES `role`
+(`id`) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
